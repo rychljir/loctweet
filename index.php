@@ -8,7 +8,7 @@
     <meta name="author" content="Carlos Alvarez - Alvarez.is - blacktie.co">
     <link rel="shortcut icon" href="assets/ico/favicon.png">
 
-    <title> Loctweet - find tweets easily</title>
+    <title> Loctweet - find location for your tweet</title>
 
     <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap.css" rel="stylesheet">
@@ -58,6 +58,7 @@
                     <li><a href="#about" class="smoothScroll"> About</a></li>
                     <li><a href="#map" class="smoothScroll"> Map</a></li>
                     <li><a href="#locations" class="smoothScroll"> Locations</a></li>
+                    <li><a href="#history" class="smoothScroll"> History</a></li>
                 </ul>
             </div>
             <!--/.nav-collapse -->
@@ -71,7 +72,7 @@
 
         <p>Loctweet</p>
 
-        <p>Recent tweets from your location</p>
+        <p>Find nearby locations by Twitter</p>
     </header>
 </div>
 <!-- /headerwrap -->
@@ -113,15 +114,17 @@
         <hr>
 
         <div class="col-lg-6">
-            <p>This website was created as a semestral project for a subject VIA at CTU Prague. It displays tweets based
-                on location on the map and set time.</p>
+            <p>This website was created as a semestral project for a subject VIA at CTU Prague. It displays locations close to
+            your click, which are found by Twitter.</p>
         </div>
         <!-- col-lg-6 -->
 
         <div class="col-lg-6">
-            <p>It uses Twitters API for getting particular tweets from Twitters database. Then they are shown in a map,
-                which is created by Google maps API. For a part of project, which has to use some own API, it uses API
-                sparks, where databse of the last locations is stored.</p>
+            <p>It uses Twitters API for getting particular locations from Twitters database. Then they are shown in a map,
+                which is created by Google maps API. For a part of the project, which has to use some own API, it uses API
+                sparks, where is stored a database of the last searched locations. It uses Twittie library for connection to
+                Twitter API and TwitterOAuth library for authorization. Design is a bootstrap template created by BlackTie.co.
+            </p>
         </div>
         <!-- col-lg-6 -->
     </div>
@@ -132,7 +135,7 @@
 <!-- ==== SECTION DIVIDER1 -->
 <section class="section-divider textdivider divider1">
     <div class="container">
-        <h1>Locate nearby tweets</h1>
+        <h1>Find nearby locations for your tweet</h1>
         <hr>
         <p>All you have to do is just a one click.</p>
     </div>
@@ -152,7 +155,7 @@
         <br>
 
         <div class="col-lg-12 ">
-            <div id="googleMap" style="width:100%;height:700px;"></div>
+            <div id="googleMap" style="width:80%;height:500px;margin: auto;"></div>
         </div>
     </div>
     <!-- row -->
@@ -163,56 +166,35 @@
 
 <!-- ==== SECTION DIVIDER2 -->
 <section class="section-divider textdivider divider2" style="background: #222">
-    <div class="container" id="lcations" name="locations">
-        <h1>Previous locations</h1>
+    <div class="container" id="locations" name="locations">
+        <h1 class="toScroll">Close locations by Twitter</h1>
         <hr>
         <div class="MyTweets">
             <div class="tweets"></div>
         </div>
-        <?php
-
-        require_once("api/twitteroauth/twitteroauth.php"); //Path to twitteroauth library you downloaded in step 3
-
-        $twitteruser = "w3resource"; //user name you want to reference
-        $notweets = 2; //how many tweets you want to retrieve
-        $consumerkey = "MeXUDma7eV0R3ePExgFH8SAXy";
-        $consumersecret = "2hZG6X26CRd1zVOQwJHwreXRRmD5me3VwZ0Kl09uZSPwhchjD3";
-        $accesstoken = "4737100353-3AuAYS9CsqNDh8aINkELwAUrl1hBJHyBcBqDWsA";
-        $accesstokensecret = "1MtPAf9Ov0f59na3smDlof2JRt1czTAYZQfoHPCxjlPwQ";
-        function getToken($cons_key, $cons_secret, $oauth_token, $oauth_token_secret)
-        {
-            $connection = new TwitterOAuth($cons_key, $cons_secret, $oauth_token, $oauth_token_secret);
-            return $connection;
-        }
-        echo "0";
-        $connection = getToken($consumerkey, $consumersecret, $accesstoken, $accesstokensecret);
-        echo "1";
-        $tweets = $connection->get("https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=" . $twitteruser . "&count=" . $notweets);
-        echo "2";
-        ?>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script type="text/javascript" src="tweetie.js"></script>
-        <script type="text/javascript">
-            $('.MyTweets .tweets').twittie({
-                username: 'schwarzenbergk',
-                list: 'sql',
-                dateFormat: '%b. %d, %Y',
-                template: '<strong class="date">{{date}}</strong> - {{screen_name}} {{tweet}}',
-                count: 10
-            }, function () {
-                setInterval(function() {
-                    var item = $('.example2 .tweet ul').find('li:first');
-
-                    item.animate( {marginLeft: '-220px', 'opacity': '0'}, 500, function() {
-                        $(this).detach().appendTo('.example2 .tweet ul').removeAttr('style');
-                    });
-                }, 5000);
-            });
-        </script>
-    </div>
+        <script type="text/javascript" src="assets/js/tweetie.js"></script>
     <!-- container -->
 </section>
 <!-- section -->
+
+<!-- ==== HISTORY ==== -->
+<div class="container" id="history" name="history">
+    <br>
+    <br>
+
+    <div class="row">
+        <h2 class="centered">Previous searches</h2>
+        <hr>
+        <br>
+        <div class="col-lg-12 centered" style="margin:auto;margin-bottom: 50px" id="history_cont">
+
+        </div>
+    </div>
+    <!-- row -->
+
+</div>
+<!-- container -->
 
 <div id="footerwrap">
     <div class="container">

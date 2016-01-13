@@ -1,0 +1,84 @@
+{
+  "id": "0126ba1e341b038c",
+  "url": "https://api.twitter.com/1.1/geo/id/0126ba1e341b038c.json",
+  "place_type": "admin",
+  "name": "Prague",
+  "full_name": "Prague, Czech Republic",
+  "country_code": "CZ",
+  "country": "Czech Republic",
+  "contained_within": [
+    {
+      "id": "6b5d375c346e3be9",
+      "url": "https://api.twitter.com/1.1/geo/id/6b5d375c346e3be9.json",
+      "place_type": "country",
+      "name": "Czech Republic",
+      "full_name": "Czech Republic",
+      "country_code": "CZ",
+      "country": "Czech Republic",
+      "centroid": [
+        15.528598867324,
+        49.80353375
+      ],
+      "bounding_box": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              12.0909912,
+              48.5515315
+            ],
+            [
+              12.0909912,
+              51.055648
+            ],
+            [
+              18.8599103,
+              51.055648
+            ],
+            [
+              18.8599103,
+              48.5515315
+            ],
+            [
+              12.0909912,
+              48.5515315
+            ]
+          ]
+        ]
+      },
+      "attributes": {}
+    }
+  ],
+  "centroid": [
+    14.446464328939,
+    50.05945365
+  ],
+  "bounding_box": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          14.2252428,
+          49.9419037
+        ],
+        [
+          14.2252428,
+          50.1772562
+        ],
+        [
+          14.7065078,
+          50.1772562
+        ],
+        [
+          14.7065078,
+          49.9419037
+        ],
+        [
+          14.2252428,
+          49.9419037
+        ]
+      ]
+    ]
+  },
+  "attributes": {}
+}
