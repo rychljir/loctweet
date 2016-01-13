@@ -115,7 +115,7 @@
 
         <div class="col-lg-6">
             <p>This website was created as a semestral project for a subject VIA at CTU Prague. It displays locations close to
-            your click, which are found by Twitter.</p>
+            your click, which are found by Twitter. The code is stored on <a href="https://github.com/rychljir/loctweet/tree/master">GitHub</a> </p>
         </div>
         <!-- col-lg-6 -->
 
